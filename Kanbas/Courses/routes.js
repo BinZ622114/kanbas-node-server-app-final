@@ -77,9 +77,9 @@ export default function CourseRoutes(app) {
   });
 
   //Quiz Part
-  app.get("/api/courses/:courseId/quizzes", (req, res) => {
+  app.get("/api/courses/:courseId/quizzes", async (req, res) => {
     const { courseId } = req.params;
-    const quizzes = quizzesDao.findQuizzesForCourse(courseId);
+    const quizzes = await quizzesDao.findQuizzesForCourse(courseId);
     res.json(quizzes);
   });
 }
